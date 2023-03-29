@@ -99,13 +99,13 @@ else{
     $user = 'u54534';
     $pass = '5383176';
     $conn = new PDO('mysql:host=localhost;dbname=u54534', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
-    $stmt = $conn->prepare("INSERT INTO FORMS_CHAR(name, email, year, gender, limbs, biography) VALUES (:name, :email, :year, :gender, :limbs, :biography)");
+    $stmt = $conn->prepare("INSERT INTO FORMS(name, email, year, gender, limbs, biography) VALUES (:name, :email, :year, :gender, :limbs, :biography)");
     $rez=$stmt->execute(['name'=>"$name",'email'=>"$email", 'year'=>"$year", 'gender'=>"$gender", 'limbs'=>"$kol", 'biography'=>"$biography"]);
     $id_form=$conn->lastInsertId();
-    $stmt2=$conn->prepare("INSERT INTO SUPER_CHAR(immortality, passing_through_walls,levitation) VALUES (:immortality, :passing_through_walls, :levitation)");
+    $stmt2=$conn->prepare("INSERT INTO SUPERPOWERS(immortality, passing_through_walls,levitation) VALUES (:immortality, :passing_through_walls, :levitation)");
     $rez2=$stmt2->execute(['immortality'=>"$immortality", 'passing_through_walls'=>"$passing_through_walls", 'levitation'=>"$levitation"]);
     $id_super=$conn->lastInsertId();
-    $stmt3=$conn->prepare("INSERT INTO FORM_SUPER_CHAR(id_DATA_FORM, id_DATA_superpower) VALUES (:id_DATA_FORM, :id_DATA_superpower)");
+    $stmt3=$conn->prepare("INSERT INTO FORM_SUPERPOWER(id_DATA_FORM, id_DATA_superpower) VALUES (:id_DATA_FORM, :id_DATA_superpower)");
     $rez3=$stmt3->execute(['id_DATA_FORM'=>"$id_form", 'id_DATA_superpower'=>"$id_super"]);
   
     if($rez==1 && $rez2==1 && $rez3==1){
