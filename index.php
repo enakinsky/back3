@@ -96,9 +96,9 @@ else{
       }
     }
 
-    $user = 'u52884';
-    $pass = '6854641';
-    $conn = new PDO('mysql:host=localhost;dbname=u52884', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
+    $user = 'u54534';
+    $pass = '5383176';
+    $conn = new PDO('mysql:host=localhost;dbname=u54534', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
     $stmt = $conn->prepare("INSERT INTO FORMS_CHAR(name, email, year, gender, limbs, biography) VALUES (:name, :email, :year, :gender, :limbs, :biography)");
     $rez=$stmt->execute(['name'=>"$name",'email'=>"$email", 'year'=>"$year", 'gender'=>"$gender", 'limbs'=>"$kol", 'biography'=>"$biography"]);
     $id_form=$conn->lastInsertId();
