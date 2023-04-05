@@ -1,0 +1,22 @@
+CREATE TABLE FORMS (
+id int(10) unsigned NOT NULL AUTO_INCREMENT,
+name CHAR(100) NOT NULL,
+email CHAR(100) NOT NULL,
+year int(10) NOT NULL,
+gender CHAR(15) NOT NULL,
+limbs int(5) NOT NULL,
+biography CHAR(255),
+PRIMARY KEY (id)
+);
+CREATE TABLE SUPERPOWERS (
+KEY_DATA int(10) unsigned NOT NULL AUTO_INCREMENT,
+immortality CHAR(5),
+passing_through_walls CHAR(5),
+levitation CHAR(5),
+PRIMARY KEY (KEY_DATA)
+);
+CREATE TABLE FORM_SUPERPOWER (
+id_DATA_FORM int(10) NOT NULL,
+id_DATA_superpower int(10) NOT NULL,
+PRIMARY KEY(id_DATA_FORM)
+);
