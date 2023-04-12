@@ -102,8 +102,14 @@ else{
     $stmt = $conn->prepare("INSERT INTO FORMS(name, email, year, gender, limbs, biography) VALUES (:name, :email, :year, :gender, :limbs, :biography)");
     $rez=$stmt->execute(['name'=>"$name",'email'=>"$email", 'year'=>"$year", 'gender'=>"$gender", 'limbs'=>"$kol", 'biography'=>"$biography"]);
     $id_form=$conn->lastInsertId();
-    $stmt2=$conn->prepare("INSERT INTO SUPERPOWERS(immortality, passing_through_walls,levitation) VALUES (:immortality, :passing_through_walls, :levitation)");
-    $rez2=$stmt2->execute(['immortality'=>"$immortality", 'passing_through_walls'=>"$passing_through_walls", 'levitation'=>"$levitation"]);
+     foreach ($_POST['super'] as $value) {
+           $stmt = $db->prepare("INSERT INTO SUPERPOWERS SET name = ?, superpower = ?");
+           $stmt -> execute(array(
+                $_POST['name'], 
+               $value,
+            ));
+        }
+     unset($value);
     $id_super=$conn->lastInsertId();
     $stmt3=$conn->prepare("INSERT INTO FORM_SUPERPOWER(id_DATA_FORM, id_DATA_superpower) VALUES (:id_DATA_FORM, :id_DATA_superpower)");
     $rez3=$stmt3->execute(['id_DATA_FORM'=>"$id_form", 'id_DATA_superpower'=>"$id_super"]);
@@ -121,3 +127,4 @@ else{
   include('form.php');
 }
 ?>
+// stmt - это "дескриптор состояния"
