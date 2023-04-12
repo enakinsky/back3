@@ -92,7 +92,7 @@ if (empty($_POST['super'])){
     $stmt = $conn->prepare("INSERT INTO FORMS(name, email, year, gender, limbs, biography) VALUES (:name, :email, :year, :gender, :limbs, :biography)");
     $rez=$stmt->execute(['name'=>"$name",'email'=>"$email", 'year'=>"$year", 'gender'=>"$gender", 'limbs'=>"$kol", 'biography'=>"$biography"]);
     $id_form=$conn->lastInsertId();
-    $stmt2=$conn->prepare("INSERT INTO SUPERPOWERS(id, superpower) VALUES (:id, :superpower)");
+    $stmt2=$conn->prepare("SELECT INTO SUPERPOWERS(id, superpower) VALUES (:id, :superpower)");
     $rez2=$stmt2->execute(['id'=>"$id", 'superpower'=>"$superpower"]);
     $id_super=$conn->lastInsertId();
     $stmt3=$conn->prepare("INSERT INTO FORM_SUPERPOWER(id_DATA_FORM, id_DATA_superpower) VALUES (:id_DATA_FORM, :id_DATA_superpower)");
