@@ -80,21 +80,11 @@ else{
     $error[]="Примите правила компании!";
   }
 
-  if(empty($error)){
-    $immortality='no';
-    $passing_through_walls='no';
-    $levitation='no';
-    foreach($superpowers as $cout){
-      if($cout =="Бессмертие"){
-        $immortality="yes";
-      }
-      if($cout =="Невидимость"){
-        $passing_through_walls="yes";
-      }
-      if($cout =="Левитация"){
-        $levitation="yes";
-      }
-    }
+if (empty($_POST['super'])){
+    print ('Выберите одну или несколько сверхспособностей.<br>');
+    $errors = true;
+
+}
 
     $user = 'u54534';
     $pass = '5383176';
