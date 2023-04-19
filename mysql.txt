@@ -13,7 +13,9 @@ id_super INT AUTO_INCREMENT PRIMARY KEY,
 superpower VARCHAR(255) NOT NULL
 );
 CREATE TABLE FORM_SUPERPOWER (
-id_DATA_FORM int(10) NOT NULL,
-id_DATA_superpower int(10) NOT NULL,
-PRIMARY KEY(id_DATA_FORM)
+user_id INT NOT NULL,
+ability_id INT NOT NULL,
+PRIMARY KEY (user_id, ability_id),
+FOREIGN KEY (user_id) REFERENCES users(id),
+FOREIGN KEY (ability_id) REFERENCES abilities(id)
 );
