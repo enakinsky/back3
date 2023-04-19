@@ -8,7 +8,7 @@ limbs int(5) NOT NULL,
 biography CHAR(255),
 PRIMARY KEY (id)
 );
-Create table abilities (
+Create table SUPERPOWERS (
 id INT AUTO_INCREMENT PRIMARY KEY,
 ability_name VARCHAR(255) NOT NULL
 );
