@@ -93,22 +93,11 @@ if (empty($_POST['super'])){
     $rez=$stmt->execute(['name'=>"$name",'email'=>"$email", 'year'=>"$year", 'gender'=>"$gender", 'limbs'=>"$kol", 'biography'=>"$biography"]);
     $id_form=$conn->lastInsertId();
     foreach ($_POST('superpower' as $value){
-       $stmt2=$conn->prepare("SELECT id FROM SUPERPOWERS WHERE superpower = $value");
-       $rez2=$stmt2->execute(INSERT INTO SUPERPOWERS SELECT $id_super,
-        id FROM SUPERPOWERS WHERE superpower=$value);}
+       $stmt2=$conn->prepare("SELECT id_super FROM SUPERPOWERS WHERE superpower = $value");
+       $rez2=$stmt2->execute();}
     $id_super=$conn->lastInsertId();
     $stmt3=$conn->prepare("INSERT INTO FORM_SUPERPOWER(id_DATA_FORM, id_DATA_superpower) VALUES (:id_DATA_FORM, :id_DATA_superpower)");
-    $rez3=$stmt3->execute(['id_DATA_FORM'=>"$id_form", 'id_DATA_superpower'=>"$id_super"]);
-  
-    if($rez==1 && $rez2==1 && $rez3==1){
-      $rez=1;
-    }
-    else{
-      $rez=0;
-    }
-    
-    $name = $email = $year = $gender = $kol  = $biography = $ok = "";
-    $superpowers=array();
+    $rez3=$stmt3->execute(['id_DATA_FORM'=>"$id_form", 'id_DATA_superpower'=>"$id_super"])
   }
   include('form.php');
 }
