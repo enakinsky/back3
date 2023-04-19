@@ -14,7 +14,7 @@ superpower VARCHAR(255) NOT NULL
 );
 CREATE TABLE FORM_SUPERPOWER (
 user_id INT NOT NULL,
-ability_id INT NOT NULL,
+superpower_id INT NOT NULL,
 PRIMARY KEY (user_id, ability_id),
 FOREIGN KEY (user_id) REFERENCES users(id),
 FOREIGN KEY (ability_id) REFERENCES abilities(id)
