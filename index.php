@@ -92,13 +92,13 @@ if (empty($_POST['super'])){
     $stmt = $conn->prepare("INSERT INTO FORMS(name, email, year, gender, limbs, biography) VALUES (:name, :email, :year, :gender, :limbs, :biography)");
     $rez=$stmt->execute(['name'=>"$name",'email'=>"$email", 'year'=>"$year", 'gender'=>"$gender", 'limbs'=>"$kol", 'biography'=>"$biography"]);
     $id_form=$conn->lastInsertId();
-       $stmt = $db->prepare("SELECT id FROM abilities WHERE ability_name = ?");
-    foreach ($abilities as $ability) {
-        $stmt->execute([$ability]);
-        $ability_id = $stmt->fetchColumn();
+       $stmt = $db->prepare("SELECT id FROM SUPERPOWERS WHERE superpower = ?");
+    foreach ($superpower as $superpower) {
+        $stmt->execute([$superpower]);
+        $superpower_id = $stmt->fetchColumn();
  
-        $stmt2 = $db->prepare("INSERT INTO FORN_SUPERPOWER (user_id, ability_id) VALUES (?, ?)");
-        $stmt2->execute([$id_form, $ability_id]);
+        $stmt2 = $db->prepare("INSERT INTO FORN_SUPERPOWER (user_id, superpower_id) VALUES (?, ?)");
+        $stmt2->execute([$id_form, $superpower_id]);
   }
   include('form.php');
 }
